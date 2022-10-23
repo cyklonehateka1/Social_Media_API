@@ -6,7 +6,10 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    middleName: {
+    middleNames: {
+      type: String,
+    },
+    lastName: {
       type: String,
       required: true,
     },
@@ -20,7 +23,7 @@ const UserSchema = new mongoose.Schema(
       required: true,
     },
     email: {
-      type: true,
+      type: String,
       required: true,
       unique: true,
     },
@@ -29,7 +32,6 @@ const UserSchema = new mongoose.Schema(
     },
     phone: {
       type: String,
-      unique: true,
     },
     externalUrls: {
       type: [String],
@@ -39,6 +41,10 @@ const UserSchema = new mongoose.Schema(
     },
     img: {
       type: String,
+    },
+    isVerified: {
+      type: Boolean,
+      default: false,
     },
   },
   { timestamp: true }
