@@ -42,12 +42,22 @@ const UserSchema = new mongoose.Schema(
     img: {
       type: String,
     },
-    isVerified: {
+    emailIsVerified: {
       type: Boolean,
       default: false,
     },
+    accountIsVerified: {
+      type: Boolean,
+      default: false,
+    },
+    followers: {
+      type: [mongoose.Schema.Types.ObjectId],
+    },
+    following: {
+      type: [mongoose.Schema.Types.ObjectId],
+    },
   },
-  { timestamp: true }
+  { timestamps: true }
 );
 
 export default mongoose.model("user", UserSchema);

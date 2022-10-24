@@ -58,7 +58,7 @@ export const verifyEmail = async (req, res, next) => {
       );
 
     await UserSchema.findByIdAndUpdate(req.params.id, {
-      $set: { isVerified: true },
+      $set: { emailIsVerified: true },
     });
 
     await token.remove();
@@ -79,7 +79,7 @@ export const login = async (req, res, next) => {
 
     if (!checkPassword) return next(errorHandler(400, "Wrong password"));
 
-    if (!user.isVerified) {
+    if (!user.emailIsVerified) {
       let url;
       const token = await TokenSchema.findOne({
         userId: user._id,
@@ -103,7 +103,7 @@ export const login = async (req, res, next) => {
     const jwtToken = jwt.sign(
       {
         id: user._id,
-        isVerified: user.isVerified,
+        emailIsVerified: user.emailIsVerified,
         email: user.email,
       },
       process.env.JWT_SEC

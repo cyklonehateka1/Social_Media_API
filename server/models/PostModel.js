@@ -24,6 +24,9 @@ const PostSchema = new mongoose.Schema(
     shares: {
       type: [String],
     },
+    edited: {
+      type: String,
+    },
   },
   { timestamps: true }
 );
