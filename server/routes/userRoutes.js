@@ -11,7 +11,7 @@ import {
 const router = express.Router();
 
 router.get("/:id", getUser);
-router.get("/", jwtVerification, getUsers);
+router.get("/search", jwtVerification, getUsers);
 router.delete("/delete/:id", jwtVerification, deleteUser);
 router.put("/update/:id", jwtVerification, updateUser);
 router.get("/:id/followers", jwtVerification, getUserFollowers);

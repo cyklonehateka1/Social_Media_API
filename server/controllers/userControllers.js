@@ -15,9 +15,7 @@ export const getUser = async (req, res, next) => {
 
 export const getUsers = async (req, res, next) => {
   try {
-    if (!req.user.emailIsVerified)
-      return next(errorHandler(403, "Please verify your email"));
-    const search = req.query.search;
+    const search = req.query.q;
     const limit = req.query.limit;
     const skip = req.query.skip;
 
